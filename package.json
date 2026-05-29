@@ -1,6 +1,6 @@
 {
   "name": "hallucase",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "The Legal AI Hallucination Registry — track, reproduce, and prevent legal AI hallucinations",
   "type": "module",
   "bin": {
