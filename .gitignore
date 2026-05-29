@@ -1,0 +1,6 @@
+node_modules/
+dist/
+*.tsbuildinfo
+hallucase.db
+.env
+*.DS_Store
