@@ -4,7 +4,7 @@
   "description": "The Legal AI Hallucination Registry — track, reproduce, and prevent legal AI hallucinations",
   "type": "module",
   "bin": {
-    "hallucase": "./dist/cli.js"
+    "hallucase": "dist/cli.js"
   },
   "exports": {
     ".": {
@@ -16,7 +16,10 @@
       "import": "./dist/schema.js"
     }
   },
-  "files": ["dist", "schemas"],
+  "files": [
+    "dist",
+    "schemas"
+  ],
   "scripts": {
     "build": "tsc",
     "dev": "tsx src/cli.ts",
@@ -51,7 +54,14 @@
   "bugs": {
     "url": "https://github.com/tensflare/hallucase/issues"
   },
-  "keywords": ["legal", "ai", "hallucination", "registry", "cve", "contracts"],
+  "keywords": [
+    "legal",
+    "ai",
+    "hallucination",
+    "registry",
+    "cve",
+    "contracts"
+  ],
   "author": "Tensflare Inc.",
   "license": "Apache-2.0",
   "engines": {
