@@ -1,0 +1,167 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/docfide/hallucase/schemas/hallucination-report.json",
+  "title": "HalluCase Hallucination Report",
+  "description": "A structured registry entry for a legal AI hallucination, inspired by CVE format",
+  "type": "object",
+  "required": [
+    "id",
+    "hc_id",
+    "title",
+    "description",
+    "hallucination_type",
+    "severity",
+    "domain",
+    "date_documented",
+    "hallucinated_output",
+    "expected_correct_output",
+    "created_at",
+    "updated_at"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Universally unique identifier for the report"
+    },
+    "hc_id": {
+      "type": "string",
+      "pattern": "^HC-\\d{6}$",
+      "description": "Human-readable HalluCase ID (e.g. HC-000001)"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 5,
+      "maxLength": 200,
+      "description": "Concise title summarizing the hallucination"
+    },
+    "description": {
+      "type": "string",
+      "minLength": 20,
+      "description": "Detailed description of the hallucination incident"
+    },
+    "hallucination_type": {
+      "type": "string",
+      "enum": [
+        "fake_citation",
+        "misquoted_statute",
+        "fabricated_contract_clause",
+        "incorrect_legal_standard",
+        "fabricated_obligation",
+        "misstated_jurisdiction_law",
+        "incorrect_procedural_rule",
+        "hallucinated_precedent",
+        "other"
+      ],
+      "description": "Category of hallucination"
+    },
+    "severity": {
+      "type": "string",
+      "enum": ["critical", "high", "medium", "low", "info"],
+      "description": "Impact severity level"
+    },
+    "domain": {
+      "type": "string",
+      "description": "Legal domain (e.g. contracts, litigation, corporate, ip)"
+    },
+    "jurisdiction": {
+      "type": "string",
+      "description": "Jurisdiction code (e.g. US-CA, UK, EU)"
+    },
+    "date_documented": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 datetime when the report was documented"
+    },
+    "date_occurred": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 datetime when the hallucination occurred"
+    },
+    "hallucinated_output": {
+      "type": "string",
+      "description": "The actual hallucinated text produced by the AI"
+    },
+    "expected_correct_output": {
+      "type": "string",
+      "description": "What the correct output should have been"
+    },
+    "reproduction_prompt": {
+      "type": "string",
+      "description": "The prompt used to reproduce the hallucination"
+    },
+    "reproduction_steps": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Step-by-step reproduction instructions"
+    },
+    "affected_models": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["provider", "model"],
+        "properties": {
+          "provider": { "type": "string" },
+          "model": { "type": "string" },
+          "version": { "type": "string" },
+          "configuration": { "type": "string" }
+        }
+      },
+      "description": "AI models affected by this hallucination"
+    },
+    "source_document_type": {
+      "type": "string",
+      "description": "Type of legal document involved"
+    },
+    "source_description": {
+      "type": "string",
+      "description": "Description of the source document context"
+    },
+    "impact_description": {
+      "type": "string",
+      "description": "Description of the real-world impact"
+    },
+    "sanctions_or_outcome": {
+      "type": "string",
+      "description": "Any sanctions or legal outcomes resulting from the hallucination"
+    },
+    "prevention_playbook": {
+      "type": "string",
+      "description": "Recommendations for preventing similar hallucinations"
+    },
+    "detection_tips": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Tips for detecting similar hallucinations"
+    },
+    "related_hc_ids": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^HC-\\d{6}$" },
+      "description": "Related HalluCase report IDs"
+    },
+    "reported_by": {
+      "type": "string",
+      "description": "Name or identifier of the reporter"
+    },
+    "verified": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the hallucination has been independently verified"
+    },
+    "references": {
+      "type": "array",
+      "items": { "type": "string", "format": "uri" },
+      "description": "Reference URLs for supporting evidence"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 datetime when the report was created"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 datetime when the report was last updated"
+    }
+  }
+}
